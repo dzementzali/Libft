@@ -22,12 +22,15 @@ char	*ft_strcat(char *dest, char *src)
 	return (dest);
 }
 
-int main()
+int main(int ac, char **av)
 {
-	char dest[] = "12345";
-	char src[] = "6789";
-	printf("Ma version : %s\n", ft_strcat(dest, src));
-	printf("Real one : %s\n", strcat(dest, src));
+	if (ac != 3)
+	{
+		printf("Mauvais nombre d'argument\n");
+	}
+
+	printf("Ma version : %s\n", ft_strcat(av[1], av[2]));
+	printf("Real one : %s\n", strcat(av[1], av[2]));
 	return (0);
 
 }
