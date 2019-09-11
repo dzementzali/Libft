@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 void	ft_strcpy(char *s1, char *s2)
 {
 	int i = 0;

@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-
 char	*ft_strcat(char *dest, char *src)
 {
 	int i;
@@ -16,21 +13,8 @@ char	*ft_strcat(char *dest, char *src)
 	{
 		dest[i] = src[j];
 		i++;
-		++j;
+		j++;
 	}	
 	dest[i] = '\0';
 	return (dest);
-}
-
-int main(int ac, char **av)
-{
-	if (ac != 3)
-	{
-		printf("Mauvais nombre d'argument\n");
-	}
-
-	printf("Ma version : %s\n", ft_strcat(av[1], av[2]));
-	printf("Real one : %s\n", strcat(av[1], av[2]));
-	return (0);
-
 }
