@@ -1,13 +1,7 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <bsd/string.h>
+#include "libft.h"
 
-int main()
+int main(int ac, char **av)
 {
-	char *src = "12345";
-	char *dest = "6789";
-	
-	printf("Strlcat : %zu\n", strlcat(src, dest, 3));
+	printf("Strlcat : %zu\n", strlcat(av[1], av[2], atoi(av[3])));
 	return(0);
 }

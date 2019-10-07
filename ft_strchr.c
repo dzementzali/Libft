@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strchr(const char *str, int c)
 {
@@ -28,21 +26,4 @@ char	*ft_strchr(const char *str, int c)
 		return (NULL);
 
 	return (&string[i]);
-}
-
-int	main(int ac, char **av)
-{
-	if (ac != 3)
-	{
-		printf("Mauvais nombre d'argument puto!\n");
-		return (0);
-	}
-	int a;
-
-	a = atoi(av[2]);
-
-	printf("Mine : %s\n", ft_strchr(av[1], a));
-	printf("Real : %s\n", strchr(av[1], a));
-	return (0);
-
 }

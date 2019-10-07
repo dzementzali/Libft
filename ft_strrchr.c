@@ -1,8 +1,4 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strrchr(const char *str, int c)
 {
@@ -19,7 +15,7 @@ char	*ft_strrchr(const char *str, int c)
 	}
 	if (str[0] == '\0')
 	{
-		return (NULL);
+		return (nul);
 	}
 	while (string[i])
 	{
@@ -36,20 +32,4 @@ char	*ft_strrchr(const char *str, int c)
 	}
 	return (NULL);
 
-}
-
-int main(int ac, char **av)
-{
-	int a;
-	a = atoi(av[2]);
-
-	if (ac != 3)
-	{
-		printf("Puto!\n");
-	}
-
-	printf("Strrchr : %s\n", strrchr(av[1], a));
-	printf("Strchr : %s\n", strchr(av[1], a));
-	printf("Mine : %s\n", ft_strrchr(av[1], a));
-	return (0);
 }

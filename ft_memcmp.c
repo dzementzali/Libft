@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
@@ -22,22 +20,4 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 		i++;
 	}
 	return (ss1[i] - ss2[i]);
-}
-
-int main(int ac, char **av)
-{
-	int a;
-	if (ac != 4)
-	{
-		printf("Hola puto!\n");
-		return (0);
-	}
-
-	a = atoi(av[3]);
-
-
-	printf("Real : %d\n", memcmp(av[1], av[2], a));
-	printf("Mine : %d\n", ft_memcmp(av[1], av[2], a));
-	return (0);
-
 }
