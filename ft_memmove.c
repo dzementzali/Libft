@@ -1,34 +1,41 @@
-//#include "libft.h"
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dzementz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/08 14:36:50 by dzementz          #+#    #+#             */
+/*   Updated: 2019/10/17 17:56:55 by dzementz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	*ft_memmove(void *s1, const void *s2, int n)
+#include "libft.h"
+#include <libc.h>
+
+void	*ft_memmove(void *s1, const void *s2, size_t n)
 {
-	int i;
-	char *str1;
-	char *str2;
-	char *tmp;
+	size_t	i;
+	char	*str1;
+	char	*str2;
+	char	*tmp;
 
-	i = 0;
 	str1 = (char *)s1;
 	str2 = (char *)s2;
+	if (!(tmp = (char *)malloc(sizeof(char) * n)))
+		return (str2);
+	i = 0;
 	while (str2[i] && i < n)
 	{
 		tmp[i] = str2[i];
 		i++;
 	}
+	i = 0;
 	while (tmp[i])
 	{
 		str1[i] = tmp[i];
 		i++;
 	}
+	str1[i] = '\0';
 	return (str1);
-
-}
-
-int main(int ac, char **av)
-{
-	(void)ac;
-	printf("Mine : %s\n", ft_memmove(av[1], av[2], atoi(av[3])));
-	printf("Real : %s\n", memmove(av[1], av[2], atoi(av[3])));
-	return(0);
 }

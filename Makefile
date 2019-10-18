@@ -7,9 +7,7 @@ SRCS = *.c
 all: $(NAME)
 $(NAME):
 	gcc $(FLAGS) -c $(SRCS) -I .
-	ar rc $(NAME)
-	
-	$(SRCS:.c=.o)
+	ar rc $(NAME) $(SRCS:.c=.o)
 	ranlib $(NAME)
 
 clean:

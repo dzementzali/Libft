@@ -1,33 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dzementz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/08 14:36:08 by dzementz          #+#    #+#             */
+/*   Updated: 2019/10/17 17:15:47 by dzementz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+#include <libc.h>
 
-void *ft_memccpy(void *dest, const void *src, int c, size_t n)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	size_t i;
-	char *des;
-	char *sour;
+	size_t	i;
+	char	*des;
+	char	*sour;
 
-	des =(char *)dest;
-	sour =(char *)src;
-
-	
-
+	des = (char *)dest;
+	sour = (char *)src;
 	i = 0;
-	while (sour[i] && i < n)
+	while (i < n && sour[i] != c)
 	{
-		if(sour[i] == (char)c)
-			return(des);
-
 		des[i] = sour[i];
 		i++;
 	}
-	return (des);
-}
-
-int main(int ac, char **av)
-{
-	(void)ac;
-	printf("Mienne : %d\n", ft_memccpy(av[1], av[2], atoi(av[3]), 5));
-	printf("Real : %d\n", memccpy(av[1], av[2], atoi(av[3]), 5));
-	return(0);
-
+	if (i == n)
+		return (NULL);
+	else
+	{
+		des[i] = sour[i];
+		return (des + i + 1);
+	}
 }

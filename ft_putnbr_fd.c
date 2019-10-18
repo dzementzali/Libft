@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dzementz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 14:35:14 by dzementz          #+#    #+#             */
-/*   Updated: 2019/10/15 16:23:01 by dzementz         ###   ########.fr       */
+/*   Created: 2019/10/11 19:50:51 by dzementz          #+#    #+#             */
+/*   Updated: 2019/10/15 16:39:34 by dzementz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <libc.h>
 
-void	*ft_memchr(const void *str, int c, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
-	char	*s;
-	char	d;
+	long nb;
 
-	i = 0;
-	s = (char *)str;
-	d = (char)c;
-	while (i < n)
+	nb = n;
+	if (nb < 0)
 	{
-		if (s[i] == d)
-			return (s + i);
-		i++;
+		ft_putchar_fd('-' + 48, fd);
+		nb = nb * -1;
 	}
-	return (NULL);
+	if (nb > 9)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putchar_fd(nb % 10 + 48, fd);
+	}
+	if (nb < 9)
+		ft_putchar_fd(nb % 10 + 48, fd);
 }

@@ -1,35 +1,33 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dzementz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/09 13:03:08 by dzementz          #+#    #+#             */
+/*   Updated: 2019/10/15 14:14:38 by dzementz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_strcpy(char *s1, char *s2)
+#include "libft.h"
+#include <stdlib.h>
+
+char	*ft_strdup(const char *str)
 {
-	int i = 0;
-	while (s1[i] != '\0')
-	{
-		s2[i] = s1[i];
-		i++;
-	}
-}
-int	ft_strlen(char *str)
-{
-	int i = 0;
+	int		i;
+	char	*s;
+
+	if (!str || !*str || str[0] == '\0')
+		return (NULL);
+	if (!(s = (char*)malloc(sizeof(char) * ft_strlen(str) + 1)))
+		return (0);
+	i = 0;
 	while (str[i])
 	{
+		s[i] = str[i];
 		i++;
 	}
-	return(i);
-}
-
-char *ft_strdup(char *src)
-{
-	int i = 0;
-	char *dest;
-
-	if (!(dest = (char *)malloc(sizeof(char) * ft_strlen(src))))
-	       return (NULL);
-	while (src[i] != '\0')
-	{
-		ft_strcpy(src, dest);
-		i++;
-	}	
-	return(dest);
+	s[i] = '\0';
+	return (s);
 }

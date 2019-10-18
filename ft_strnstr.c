@@ -1,15 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dzementz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/08 14:39:06 by dzementz          #+#    #+#             */
+/*   Updated: 2019/10/16 23:48:43 by dzementz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <unistd.h>
-#include <stdio.h>
+#include <libc.h>
 
-int main(int ac, char **av)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	if(ac != 4)
-	{
-		printf("Mauvais nombre d'argument puto!!");
-		return(0);
-	}
+	size_t i;
+	size_t j;
 
-	printf("%u\n", strnstr(av[1], av[2], atoi(av[3])));
-	return(0);
+	i = 0;
+	j = 0;
+	if (!s1 || !s2 || !*s1 || !*s2)
+		return (NULL);
+	if (s2[0] == '\0')
+		return ((char *)s1);
+	while (s1[i] != '\0' && i < n)
+	{
+		if (s1[i] == s2[j])
+			j++;
+		if (s2[j] == '\0')
+			return ((char *)&s1[(i - j) + 1]);
+		i++;
+	}
+	return (NULL);
 }
