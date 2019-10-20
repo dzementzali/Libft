@@ -6,15 +6,21 @@
 /*   By: dzementz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 22:21:37 by dzementz          #+#    #+#             */
-/*   Updated: 2019/10/17 18:39:02 by dzementz         ###   ########.fr       */
+/*   Updated: 2019/10/20 14:41:32 by dzementz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <unistd.h>
 #include <stdlib.h>
+#include <libc.h>
+
+typedef struct s_list
+{
+void *content;
+struct s_list *next;
+} t_list;
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *str, size_t n);
@@ -50,5 +56,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr(char *s);
+t_list	*ft_lstnew(void *content);
 
 #endif

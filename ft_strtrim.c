@@ -6,12 +6,12 @@
 /*   By: dzementz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 22:14:59 by dzementz          #+#    #+#             */
-/*   Updated: 2019/10/18 19:08:51 by dzementz         ###   ########.fr       */
+/*   Updated: 2019/10/18 21:58:21 by dzementz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <libc.h>
+#include <stdlib.h>
 
 int		strverif(const char c, const char *str)
 {
