@@ -6,17 +6,17 @@
 /*   By: dzementz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:38:29 by dzementz          #+#    #+#             */
-/*   Updated: 2019/10/20 17:38:31 by dzementz         ###   ########.fr       */
+/*   Updated: 2019/10/22 23:05:04 by dzementz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 t_list	*ft_lstnew(void *content)
 {
 	t_list *new;
 
-	if (!(new = (t_list *)malloc(sizeof(*new))))
+	if (!(new = malloc(sizeof(t_list))))
 		return (NULL);
 	new->content = content;
 	new->next = NULL;

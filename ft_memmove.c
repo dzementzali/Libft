@@ -6,20 +6,34 @@
 /*   By: dzementz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:36:50 by dzementz          #+#    #+#             */
-/*   Updated: 2019/10/18 20:22:32 by dzementz         ###   ########.fr       */
+/*   Updated: 2019/10/22 23:12:32 by dzementz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <libc.h>
-#include <stdlib.h>
 
-void	*ft_memmove(void *s1, const void *s2, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*tmp;
+	int			i;
+	char		*d;
+	const char	*s;
 
-	tmp = ft_calloc(sizeof(char), ft_strlen(s2));
-	ft_memcpy(tmp, s2, n);
-	ft_memcpy(s1, tmp, n);
-	return (s1);
+	d = (char*)dst;
+	s = (const char*)src;
+	i = -1;
+	if (!dst && !src)
+		return (NULL);
+	if (len == 0)
+		return (d);
+	if (d < s)
+	{
+		while (++i < (int)len)
+			d[i] = s[i];
+	}
+	else
+	{
+		while (++i < (int)len)
+			d[(len - 1) - i] = s[(len - 1) - i];
+	}
+	return (dst);
 }

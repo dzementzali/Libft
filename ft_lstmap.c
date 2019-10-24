@@ -5,26 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dzementz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/20 19:48:05 by dzementz          #+#    #+#             */
-/*   Updated: 2019/10/20 20:33:18 by dzementz         ###   ########.fr       */
+/*   Created: 2019/10/20 16:49:21 by dzementz          #+#    #+#             */
+/*   Updated: 2019/10/21 18:35:25 by dzementz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f) (void *), void (*del)(void *))
 {
-	t_list *miaou;
+	t_list *mapi;
 
-	if (lst)
+	if (!lst || !f)
+		return (NULL);
+	if (!(mapi = ft_lstnew(f(lst->content))))
 	{
-		while (lst != NULL)
-		{
-			miaou = ft_lstnew((*f)(lst->content));
-			lst = lst->next;
-			miaou = miaou->next;
-		}
+		ft_lstclear(&mapi, del);
+		return (NULL);
 	}
-	return (miaou);
+	mapi->next = ft_lstmap(lst->next, f, del);
+	return (mapi);
 }

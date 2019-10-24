@@ -6,14 +6,13 @@
 /*   By: dzementz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 21:47:40 by dzementz          #+#    #+#             */
-/*   Updated: 2019/10/15 16:26:49 by dzementz         ###   ########.fr       */
+/*   Updated: 2019/10/23 11:55:51 by dzementz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strndup(const char *s1, int c)
+static char	*ft_strnndup(const char *s1, int c)
 {
 	int		i;
 	char	*str;
@@ -33,7 +32,7 @@ char	*ft_strndup(const char *s1, int c)
 	return (str);
 }
 
-int		ft_counting(const char *str, char c)
+static int	ft_counting(const char *str, char c)
 {
 	int nb;
 	int i;
@@ -54,7 +53,7 @@ int		ft_counting(const char *str, char c)
 	return (nb);
 }
 
-char	**ft_split(const char *str, char c)
+char		**ft_split(const char *str, char c)
 {
 	int		i;
 	int		k;
@@ -72,7 +71,7 @@ char	**ft_split(const char *str, char c)
 			i++;
 		if (str[i] && str[i] != c)
 		{
-			tab[k] = ft_strndup(str + i, c);
+			tab[k] = ft_strnndup(str + i, c);
 			k++;
 		}
 		while (str[i] && str[i] != c)

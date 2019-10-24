@@ -6,14 +6,13 @@
 /*   By: dzementz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 22:14:59 by dzementz          #+#    #+#             */
-/*   Updated: 2019/10/18 21:58:21 by dzementz         ###   ########.fr       */
+/*   Updated: 2019/10/24 10:15:23 by dzementz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-int		strverif(const char c, const char *str)
+static int		strverif(const char c, const char *str)
 {
 	int i;
 
@@ -28,15 +27,17 @@ int		strverif(const char c, const char *str)
 	return (0);
 }
 
-char	*ft_strtrim(char const *str, char const *set)
+char			*ft_strtrim(char const *str, char const *set)
 {
 	int		i;
 	int		j;
 	int		x;
 	char	*s;
 
-	if (!set || !*set || !str || !*str)
+	if (!str)
 		return (NULL);
+	if (set == 0)
+		return (ft_calloc(sizeof(char), 1));
 	i = 0;
 	j = ft_strlen(str) - 1;
 	while (strverif(str[i], set) == 1)
@@ -45,7 +46,7 @@ char	*ft_strtrim(char const *str, char const *set)
 		return (ft_calloc(sizeof(char), 1));
 	while (strverif(str[j], set) == 1)
 		j--;
-	if (!(s = (char *)malloc(sizeof(char) * (j - i + 1))))
+	if (!(s = (char *)malloc(sizeof(char) * ((j + 1) - i) + 1)))
 		return (NULL);
 	x = 0;
 	while (i <= j)

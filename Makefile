@@ -20,7 +20,6 @@ SRCS =	ft_atoi.c \
 		ft_putchar_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
-		ft_putstr.c \
 		ft_putstr_fd.c \
 		ft_split.c \
 		ft_strchr.c \
@@ -43,10 +42,10 @@ BONUS = ft_lstadd_front.c \
 		ft_lstdelone.c \
 		ft_lstclear.c \
 		ft_lstiter.c \
-		ft_lstmap.c \
 		ft_lstlast.c \
 		ft_lstnew.c \
 		ft_lstsize.c \
+		ft_lstmap.c \
 
 all: $(NAME)
 
@@ -56,8 +55,8 @@ $(NAME):
 	ranlib $(NAME)
 
 bonus:
-	gcc $(FLAGS) -c $(BONUS) -I .
-	ar rc $(NAME) $(BONUS:.c=.o) $^
+	gcc $(FLAGS) -c $(SRCS) $(BONUS) -I .
+	ar rc $(NAME) $(BONUS:.c=.o) $(SRCS:.c=.o) $^
 	ranlib $(NAME)
 
 clean:
